@@ -71,62 +71,193 @@ let positiveCounter = (positive: number[]): number => {
 
 console.log(positiveCounter([1, -54, 5, 7, 4]));
 
-
 // Write a function that takes an array of words and returns a new array containing only the words that start with the letter 'a'.
-let wordArray = ["apple","amend","orange","asymetric"]
-let strngFunction = (words:string[]):string[] =>{
-let newWords:string[] = [];
-    for(let i=0; i<words.length; i++){
-
-        if(words[i][0]==="a"){
-            newWords.push(words[i]);
-        }
-
+let wordArray = ["apple", "amend", "orange", "asymetric"];
+let strngFunction = (words: string[]): string[] => {
+  let newWords: string[] = [];
+  for (let i = 0; i < words.length; i++) {
+    if (words[i][0] === "a") {
+      newWords.push(words[i]);
     }
-    return newWords;
-
-}
+  }
+  return newWords;
+};
 console.log(strngFunction(wordArray));
-
-
 
 // Create a script that logs the second to last element of an array named fruits.
 let fruits: string[] = ["apple", "strawberry", "banana", "orange"];
 console.log(fruits[fruits.length - 2]);
 
-
 // Develop a function that takes an array of numbers and returns a new array with each number squared.
-let arrayNumbers = [1,2,3,4,5,6];
+let arrayNumbers = [1, 2, 3, 4, 5, 6];
 
-let squareArray = (numArray:number[]):number[] =>{
-    let newArray = [];
-    for(let num of numArray){
-        newArray.push(num**2);
-    }
-    return newArray;
-}
+let squareArray = (numArray: number[]): number[] => {
+  let newArray = [];
+  for (let num of numArray) {
+    newArray.push(num ** 2);
+  }
+  return newArray;
+};
 
 console.log(squareArray(arrayNumbers));
 
-
 // Write a JavaScript function that accepts an array and reverses its elements without using the .reverse() method. Log the result.
-let testArray = ["apple", "orange", "banana", 1,2,3]
-let reverseArray = (numArray:any[]):any[] => {
-    let newArray = [];
-    for(let num of numArray){
-      newArray.unshift(num);
-    }
-    return newArray;
-}
+let testArray = ["apple", "orange", "banana", 1, 2, 3];
+let reverseArray = (numArray: any[]): any[] => {
+  let newArray = [];
+  for (let num of numArray) {
+    newArray.unshift(num);
+  }
+  return newArray;
+};
 console.log(reverseArray(testArray));
 
 // Given an array scores [10, 5, 20, 20, 4, 5, 2, 25, 1], write a function that logs the number of times the score exceeded the maximum score and the number of times it fell below the minimum score.
 let score = [10, 5, 20, 20, 4, 5, 2, 25, 1];
 
-/*let scoreCounter = (numarray:number[]) => {
-    for(){
+let scoreCounter = (numArray: number[]) => {
+  let minNum = Math.min(...numArray);
+  let maxNum = Math.max(...numArray);
 
+  let minCount = 0;
+  let maxCount = 0;
+
+  for (let num of numArray) {
+    if (num > maxNum) {
+      maxCount++;
     }
 
-}*/
+    if (num < minNum) {
+      minCount++;
+    }
+  }
+  console.log(`Minimum counter is ${minCount}`);
+  console.log(`Maximum counter is ${maxCount}`);
+};
+scoreCounter(score);
 
+// Create a function that removes all falsey values from an array. Falsey values include false, null, 0, "", undefined, and NaN
+let mixArray = [0, "my name", "", true, false, 0, null, undefined, NaN];
+
+let falseRemover = (arrayAny: any[]): any[] => {
+  let filteredArray = arrayAny.filter((value) => value);
+  arrayAny.splice(0, arrayAny.length, ...filteredArray);
+  return arrayAny;
+};
+console.log(falseRemover(mixArray));
+
+// Write a script that concatenates two arrays [1, 2, 3] and [4, 5, 6] into a single array.
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+
+let concatenatedArray = [...array1, ...array2];
+
+console.log(concatenatedArray);
+
+// Develop a function called sumOfElements that calculates the sum of all elements in an array that are either even or odd, based on a parameter.
+let sumArray = [2, 5, 7, 1, 6, 9, 8, 5, 3];
+
+let sumOfElements = (numArray: number[], condition?: string) => {
+  let filterCondition = (num: number) => {
+    if (condition === "even" || condition === "Even") {
+      return num % 2 === 0;
+    } else if (condition === "odd" || condition === "Odd") {
+      return num % 2 !== 0;
+    }
+  };
+  let newArray = numArray.filter(filterCondition);
+  console.log(newArray);
+  let sum = 0;
+  for (let num of newArray) {
+    sum = sum + num;
+  }
+  return sum;
+};
+console.log(sumOfElements(sumArray, "odd"));
+
+// Create a function that checks whether an element exists in an array. If it exists, return the index, otherwise return -1
+let checkArray = [4, 5, 8, 74, 545, "danyal", 52, 13, 8];
+
+let elemCheck = (checkArray: any[], element: any) => {
+  for (let i = 0; i < checkArray.length; i++) {
+    if (checkArray[i] == element) {
+      return i;
+    }
+  }
+  return -1;
+};
+console.log(elemCheck(checkArray, "danyal"));
+
+// Write a function to find and return the smallest number in an array of integers.
+
+let intArray = [1, -1, 3, -58, -78, 45, 0, 70, 150];
+
+let smallNum = (intArray: number[]) => {
+  let smlArray = intArray[0];
+  for (let i = 0; i < intArray.length; i++) {
+    if (intArray[i] < smlArray) {
+      smlArray = intArray[i];
+    }
+  }
+  console.log(smlArray);
+};
+
+smallNum(intArray);
+
+// Write a function calculateProduct that takes an array of numbers and returns the product of all elements.
+let pArray = [1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 5];
+let arrayProduct = (pArray: number[]) => {
+  let product = 1;
+  for (let num of pArray) {
+    product *= num;
+  }
+  return product;
+};
+
+console.log(arrayProduct(pArray));
+
+// Develop a function filterByLength that takes an array of strings and a number n. The function should return an array containing only the strings that are longer than n characters.
+let stringArray = [
+  "Pakistan",
+  "China",
+  "Bangladesh",
+  "Afghanistan",
+  "Iran",
+  "how",
+];
+let filterByLength = (stringArray: string[], numN: number) => {
+  let callbackCondition = (value: string) => {
+    return value.length > numN;
+  };
+  let nArray = stringArray.filter(callbackCondition);
+  return nArray;
+};
+console.log(filterByLength(stringArray, 7));
+
+// Create a function findDuplicates that finds and logs all duplicates in an array.
+let dupArray = [1, 2, 1, 3, 2, 5, 5, 8, 2, 3];
+let findDuplicates = (dupArray: any[]) => {
+  let newDupArray: any[] = [];
+  for (let i = 0; i < dupArray.length; i++) {
+    for (let j = i + 1; j < dupArray.length; j++) {
+      if (dupArray[i] === dupArray[j] && !newDupArray.includes(dupArray[i])) {
+        newDupArray.push(dupArray[i]);
+        break;
+      }
+    }
+  }
+  return newDupArray;
+};
+console.log(findDuplicates(dupArray));
+
+// Write a function incrementAll that takes an array of integers and increments each element by one.
+let integerArray:number[] = [1,2,3,4,5,6,7,8,9]
+let incrementAll = (integerArray:number[]) =>{
+let newIntArray = [];
+for (let num of integerArray){
+  newIntArray.push(num+1);
+}
+return newIntArray;
+}
+
+console.log(incrementAll(integerArray));
