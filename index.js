@@ -204,6 +204,7 @@ let findDuplicates = (dupArray) => {
         for (let j = i + 1; j < dupArray.length; j++) {
             if (dupArray[i] === dupArray[j] && !newDupArray.includes(dupArray[i])) {
                 newDupArray.push(dupArray[i]);
+                break;
             }
         }
     }
@@ -215,8 +216,76 @@ let integerArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let incrementAll = (integerArray) => {
     let newIntArray = [];
     for (let num of integerArray) {
-        newIntArray.push(num++);
+        newIntArray.push(num + 1);
     }
     return newIntArray;
 };
 console.log(incrementAll(integerArray));
+// Create a function isSorted that checks if an array is sorted in ascending order.
+let isSorted = (sortArray) => {
+    for (let i = 0; i < sortArray.length - 1; i++) {
+        if (sortArray[i] > sortArray[i + 1]) {
+            return false;
+        }
+    }
+};
+// Write a function that receives an array of names and formats them into a string separated by commas, except for the last two names, which should be separated by "and".
+let strArray = [
+    "pakistan",
+    "china",
+    "nepal",
+    "iran",
+    "peru",
+    "cuba",
+    "canada",
+];
+let stringSort = (strArray) => {
+    return `${strArray.slice(0, -2).join(", ")}, ${strArray
+        .slice(-2)
+        .join(" and ")}`;
+};
+console.log(stringSort(strArray));
+// Develop a function that converts an array of Fahrenheit temperatures to Celsius and logs the new temperatures.
+let fahrenheitTemp = [32, 45, 85, 99, 120, 100];
+let fahToCel = (fahrenheitTemp) => {
+    let saveTemp = [];
+    for (let num of fahrenheitTemp) {
+        let convert = Math.floor((num - 32) * 0.56);
+        saveTemp.push(convert);
+    }
+    return saveTemp;
+};
+console.log(fahToCel(fahrenheitTemp));
+// Write a function minMaxAverage that takes an array of numbers and returns an object with properties for the minimum, maximum, and average of those numbers.
+let mmaArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let minMaxAverage = (mmaArray) => {
+    let sum = mmaArray[0];
+    let min = mmaArray[0];
+    let max = mmaArray[0];
+    for (let i = 1; i < mmaArray.length; i++) {
+        sum += mmaArray[i];
+        if (min > mmaArray[i]) {
+            min = mmaArray[i];
+        }
+        if (max < mmaArray[i]) {
+            max = mmaArray[i];
+        }
+    }
+    let avg = sum / mmaArray.length;
+    let finalObj = {
+        minimum: min,
+        maxmimum: max,
+        Average: avg,
+    };
+    return finalObj;
+};
+console.log(minMaxAverage(mmaArray));
+// Create a function swapElements that swaps two specified indices in an array.
+let indexArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let swapElements = (indexArray, x, y) => {
+    let tempX = indexArray[x];
+    indexArray[x] = indexArray[y];
+    indexArray[y] = tempX;
+    return indexArray;
+};
+console.log(swapElements(indexArray, 0, 4));
