@@ -1,3 +1,5 @@
+// import inquirer from "inquirer";
+
 // Write a script to log "Hello, World!" to the console.
 console.log("Hello, World!");
 
@@ -343,4 +345,88 @@ let swapElements = (indexArray: any[], x: number, y: number): any[] => {
 
 console.log(swapElements(indexArray, 0, 4));
 
+// Develop a function that takes two inputs, a string and a character, and returns the number of times the character appears in the string.
+let strVar: string = "Apple, Mango, orange, pineapple";
+let charVar: string = "p";
 
+let numCharFinder = (strVar: string, charVar: string) => {
+  let number = 0;
+
+  for (let num of strVar) {
+    if (num === charVar) {
+      number++;
+    }
+  }
+  return number;
+};
+
+console.log(numCharFinder(strVar, charVar));
+
+// Create a 'to-do list' array of objects where each object has properties task and completed (a boolean). Write a function to log only the tasks that are not yet completed.
+
+let toDoList = [
+  { task: "drink water", completed: false },
+  { task: "drink tea", completed: true },
+  { task: "have dinner", completed: true },
+  { task: "study", completed: true },
+  { task: "exercise", completed: false },
+];
+
+let tasFinder = (toDoList: any[]) => {
+  let tasks = [];
+  for (let value of toDoList) {
+    if (value.completed === true) {
+      tasks.push(value.task);
+    }
+  }
+  console.log(tasks);
+};
+
+tasFinder(toDoList);
+
+// Write a function that takes an array of integers and sorts them from smallest to largest.
+let numbArray = [9, 4, 5, 1, 2, 3, 8, 7, 5];
+
+let sorFunc = (numbArray: number[]) => {
+  numbArray.sort((a, b) => a - b);
+
+  return numbArray;
+};
+
+console.log(sorFunc(numbArray));
+
+// Develop a TypeScript program that logs every element of an array in reverse order without using the .reverse() method.
+let revArray: any[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let revFunc = (revArray: any[]) => {
+  let RevArray = [];
+  for (let num of revArray) {
+    RevArray.unshift(num);
+  }
+
+  for (let num of RevArray) {
+    console.log(num);
+  }
+};
+
+revFunc(revArray);
+
+// Write a script that simulates a basic calculator. It should take two operands and an operator ('+', '-', '*', '/') from the user, perform the operation, and log the result.
+let val2: number = 10;
+let val1: number = 5;
+let operate: string = "*";
+
+let calculator = (val1: number, val2: number, operate: string) => {
+  switch (operate) {
+    case "+":
+      return val1 + val2;
+    case "-":
+      return val1 - val2;
+    case "*":
+      return val1 * val2;
+    case "/":
+      return val1 / val2;
+    default:
+      return "Invalid operator";
+  }
+};
+console.log(calculator(val1, val2, operate));
